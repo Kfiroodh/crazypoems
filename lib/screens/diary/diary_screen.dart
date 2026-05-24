@@ -47,7 +47,9 @@ class _DiaryScreenState extends State<DiaryScreen> {
                 title: const Text('Edit Entry'),
                 onTap: () {
                   Navigator.pop(context);
-                  Navigator.push(context, MaterialPageRoute(builder: (_) => CreateEntryScreen(entryToEdit: entry))).then((v) => if (v == true) _loadEntries());
+                  Navigator.push(context, MaterialPageRoute(builder: (_) => CreateEntryScreen(entryToEdit: entry))).then((v) {
+                    if (v == true) _loadEntries();
+                  });
                 },
               ),
             if (isOwner)
@@ -93,7 +95,11 @@ class _DiaryScreenState extends State<DiaryScreen> {
             ),
           ),
       floatingActionButton: FloatingActionButton.extended(
-        onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (_) => const CreateEntryScreen())).then((v) => if (v == true) _loadEntries()),
+        onPressed: () {
+          Navigator.push(context, MaterialPageRoute(builder: (_) => const CreateEntryScreen())).then((v) {
+            if (v == true) _loadEntries();
+          });
+        },
         backgroundColor: const Color(0xFF673AB7),
         icon: const Icon(Icons.edit_note_rounded, color: Colors.white),
         label: const Text('Spill Feelings', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
